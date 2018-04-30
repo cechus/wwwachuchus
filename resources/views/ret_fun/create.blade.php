@@ -24,7 +24,7 @@
                 {!! Form::open(['url' => 'ret_fun', 'method' => 'POST', 'id'=>'ret-fun-form']) !!}
                 <input type="hidden" name="affiliate_id" value="{{$affiliate->id}}">
                 <ret-fun-form inline-template>
-                    <form-wizard
+                    {{-- <form-wizard
                         color="#1AB394"
                         title=""
                         subtitle=""
@@ -81,6 +81,25 @@
                             </div>
                         </div>
                     </tab-content>
+                    </form-wizard> --}}
+                    <form-wizard  shape="circle" color="#20a0ff" error-color="#ff4949">
+                        
+                        <tab-content title="Modalidad y Requisitos" ref="uno" icon="mdi mdi-format-list-checks" :before-change="validateFirstStep">
+                            <ret-fun-step1-requirements :modalities="{{ $modalities }}" :requirements="{{ $requirements }}" :user="{{ $user }}" :cities="{{ $cities }}"
+                                inline-template>
+                                @include('ret_fun.step1_requirements')
+                            </ret-fun-step1-requirements>
+                        </tab-content>
+                        <tab-content title="Additional Info" icon="ti-settings">
+                            Second tab
+                        </tab-content>
+                        <tab-content title="Last step" icon="ti-check">
+                            Yuhuuu! This seems pretty damn simple
+                        </tab-content>
+                    
+                        <el-button type="primary" slot="prev">Back</el-button>
+                        <el-button type="primary" slot="next">Next</el-button>
+                        <el-button type="primary" slot="finish">Finish</el-button>
                     </form-wizard>
                 </ret-fun-form>
                 {!! Form::close() !!}

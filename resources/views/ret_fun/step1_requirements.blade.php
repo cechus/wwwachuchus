@@ -1,7 +1,20 @@
 <div>
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group" :class="{'has-error': errors.has('city_end_id') }">
+            <el-form :inline="true" :model="formInline"  class="demo-form-inline" :rules="rules" ref="ruleForm2">
+                <el-form-item label="Activity zone" prop="region">
+                    <el-select v-model="city_end_id" placeholder="Activity zone">
+                        <el-option v-for="city in cities"  :label="city.name" :value="city.id"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="Activity zone" prop="region">
+
+                    <el-select v-model="modality" placeholder="Activity zone" @change="onChooseModality" ref="modality">
+                        <el-option v-for="(modality, index) in modalities" :label="modality.name" :value="modality.id" :key="index"></el-option>
+                    </el-select>
+                </el-form-item>
+            </el-form>
+            {{-- <div class="form-group" :class="{'has-error': errors.has('city_end_id') }">
                 <label class="col-sm-4 control-label">Regional</label>
                 <div class="col-sm-8">
                     <select class="form-control m-b" ref="city_end" name="city_end_id" @change="onChooseCity" v-model="city_end_id" v-validate.initial="'required'">
@@ -12,9 +25,9 @@
                     <i v-show="errors.has('city_end_id')" class="fa fa-warning text-danger"></i>
                     <span v-show="errors.has('city_end_id')" class="text-danger">@{{ errors.first('city_end_id') }}</span>
                 </div>
-            </div>
+            </div> --}}
         </div>
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <div class="form-group" :class="{'has-error': errors.has('ret_fun_modality') }">
                 <label class="col-sm-4 control-label">Modalidad</label>
                 <div class="col-sm-8">
@@ -25,7 +38,7 @@
                     <span v-show="errors.has('ret_fun_modality')" class="text-danger">@{{ errors.first('ret_fun_modality') }}</span>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     <h2>Lista de Requisitos</h2>
     <div>

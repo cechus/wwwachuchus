@@ -32,8 +32,8 @@ Vue.use(VueFormWizard);
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
 
-import VeeValidate from 'vee-validate';
-Vue.use(VeeValidate);
+// import VeeValidate from 'vee-validate';
+// Vue.use(VeeValidate);
 
 
 import Vuelidate from 'vuelidate'
@@ -56,6 +56,9 @@ Vue.use(VueCurrencyFilter,
 	symbolSpacing: true
 });
 
+import ElementUI from "element-ui";
+
+Vue.use(ElementUI);
 Vue.filter('percentage', function (value) {
 	return `${value.toFixed(4)} %`;
 });
